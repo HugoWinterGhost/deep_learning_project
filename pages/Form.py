@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import time
 
 from processing.Model import recommend_profiles
 
@@ -27,11 +28,20 @@ st.markdown("""
       color: #FFFFFF !important;
       border: none !important;
     }
-    .css-1a5dplj:hover:enabled, .css-1a5dplj:focus:enabled {
+    .css-1a5dplj:hover:enabled, .css-1a5dplj:focus:enabled, .css-1rtsdbg:focus:not(:active) {
       background-color: #005A9C !important;
+      color: #FFFFFF !important;
+      border: none !important;
     }
     .st-eu {
       background-color: #005A9C !important;
+      border: none !important
+    }
+    .stButton {
+      height: 35px;
+    }
+    .css-xclnog {
+      border-color: rgb(0, 90, 156, 1) rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.2) !important;
     }
   </style>
 """, unsafe_allow_html = True)
