@@ -26,18 +26,19 @@ updated_df_simple = load_dataset('./data/updated_linkedin_simple_data.csv')
 
 st.markdown("""
   <style>
-    .st-cb {
+    .st-cr {
       cursor: pointer !important;
     }
-    .css-1rtsdbg {
-      color: white
-    }
     .css-1rtsdbg:hover, .css-1rtsdbg:active {
-      background-color: #005A9C
+      background-color: #005A9C !important;
+      color: #FFFFFF !important;
+      border: none !important;
+    }
+    .css-1a5dplj:hover:enabled, .css-1a5dplj:focus:enabled {
+      background-color: #005A9C !important;
     }
   </style>
 """, unsafe_allow_html = True)
-
 
 with st.form("my_form"):
   cols1 = st.columns(3)
@@ -78,17 +79,21 @@ with st.form("my_form"):
 
   st.write("\n")
   submitted = st.form_submit_button("Valider")
-  if submitted:
-    new_job = {
-      'ageEstimate': age_estimate, 'companyFollowerCount': company_follower_count, 'companyStaffCount': company_staff_count, 
-      'connectionsCount': connections_count, 'followersCount': followers_count, 'avgEmployeeJobDuration': avg_employee_job_duration, 
-      'avgCompanyJobDuration': avg_employee_job_duration, 'companyName': companies_name[selected_companies_name], 
-      'employeeLocation': employees_location[selected_employee_location], 'employeeTitle': employee_title[selected_employee_title],
-      'jobLocation': employees_location[selected_job_location], 'jobTitle': employee_title[selected_job_title]
-    }
 
+if submitted:
+  new_job = {
+    'ageEstimate': age_estimate, 'companyFollowerCount': company_follower_count, 'companyStaffCount': company_staff_count, 
+    'connectionsCount': connections_count, 'followersCount': followers_count, 'avgEmployeeJobDuration': avg_employee_job_duration, 
+    'avgCompanyJobDuration': avg_employee_job_duration, 'companyName': companies_name[selected_companies_name], 
+    'employeeLocation': employees_location[selected_employee_location], 'employeeTitle': employee_title[selected_employee_title],
+    'jobLocation': employees_location[selected_job_location], 'jobTitle': employee_title[selected_job_title]
+  }
+
+  with st.spinner('Calcul des recommandations en cours...'):
     recommended_profiles = recommend_profiles(updated_df_simple, new_job, 5)
-    st.subheader("Profils Recommandés")
-    showDataset(recommended_profiles, 1)
-    st.markdown(f"Le dataset contient {len(recommended_profiles)} lignes et {len(recommended_profiles.columns)} colonnes. ")
-    st.balloons()
+  
+  st.subheader("Profils Recommandés")
+  st.checkbox("Utiliser la largeur du conteneur", value = True, key = "use_container_width")
+  showDataset(recommended_profiles, 1)
+  st.markdown(f"Le dataset contient {len(recommended_profiles)} lignes et {len(recommended_profiles.columns)} colonnes. ")
+  st.balloons()

@@ -4,19 +4,6 @@ st.set_page_config(page_title = "Données de recommandation de profils Linkedin"
 
 st.title('Préparation des données')
 
-# companyFollowerCount remplacer les vlauers nulles par des 0 et supprimer les vlaeurs égales à 0 
-# companyHasLogo remplacer les valeurs null par True ou False si y a une image ou pas
-# companyName virer les 2 lignes nulles
-# companyStaffCount remplacer les nulles par la médiane 50% qui est de 1269 et supprimer les vlaeurs égales à 0
-# genderEstimate faire un random de 66 % de H et 34% de F avec numpy
-# jobStartDate virer les 16 lignes nulles
-# avgEmployeeJobDuration virer les valeurs nulles et virer aussi celle qui sont en dessous ou égale de 0
-# avgCompanyJobDuration virer les valeurs nulles et virer aussi celle qui sont en dessous ou égale de 0
-# renommage et supression des colonnes
-# supression des lignes dupliqués
-# Encodage des labels
-# Fusion de pluisuers mots en une seul mot
-
 @st.cache_data
 def load_Infos(subtitle, description):
   st.subheader(subtitle)
