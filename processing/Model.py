@@ -39,7 +39,7 @@ def recommend_profiles(linkedin_simple, job, nb_recommendations):
     if col not in job_df.columns:
       job_df[col] = np.nan
 
-  job_df[numeric_cols] = scaler.transform(job_df[numeric_cols])  # 
+  job_df[numeric_cols] = scaler.transform(job_df[numeric_cols])
       
   for col in text_cols:
     job_df[col] = job_df[col].astype(str).apply(lambda x: nlp(x).vector)
