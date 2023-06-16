@@ -21,7 +21,7 @@ with st.spinner('Chargement des données en cours...'):
 
 st.markdown("""
   <style>
-    .st-cr {
+    .st-cr, .st-df {
       cursor: pointer !important;
     }
     .css-1rtsdbg:hover, .css-1rtsdbg:active {
@@ -52,15 +52,15 @@ st.markdown("""
 
 with st.form("my_form"):
   cols1 = st.columns(3)
-  age_estimate = cols1[0].number_input("Age :", value = 32)
-  company_follower_count = cols1[1].number_input("Nombre de followers de l'entreprise :", value = 1000)
-  company_staff_count = cols1[2].number_input("Nombre d'employés de l\'entreprise :", value = 1200)
+  age_estimate = cols1[0].number_input("Age :", value = 32, min_value = 1)
+  company_follower_count = cols1[1].number_input("Nombre de followers de l'entreprise :", value = 1000, min_value = 1)
+  company_staff_count = cols1[2].number_input("Nombre d'employés de l\'entreprise :", value = 1200, min_value = 1)
   
   st.write("\n")
   cols2 = st.columns(3)
-  connections_count = cols2[0].number_input("Nombre de connections linkedin de l'employé :", value = 500)
-  followers_count = cols2[1].number_input("Nombre de followers de l'employé :", value = 300)
-  avg_employee_job_duration = cols2[2].number_input("Durée moyenne du contrat de l'employé en années :", value = 3)
+  connections_count = cols2[0].number_input("Nombre de connections linkedin de l'employé :", value = 500, min_value = 1)
+  followers_count = cols2[1].number_input("Nombre de followers de l'employé :", value = 300, min_value = 1)
+  avg_employee_job_duration = cols2[2].number_input("Durée moyenne du contrat de l'employé en années :", value = 3, min_value = 1)
 
   companies_name = {1: "Atlassian", 2: "IBM", 3: "Paypal", 4: "Nestlé", 5: "WiseTech Global", 6: "Canva"}
   employees_location = {1: "Sydney", 2: "Melbourne", 3: "Newtown", 4: "Oatlands", 5: "Wangaratta", 6: "Carlton"}
@@ -77,7 +77,7 @@ with st.form("my_form"):
   
   st.write("\n")
   cols3 = st.columns(3)
-  avg_company_job_duration = cols3[0].number_input("Durée moyenne des contrats de l'entreprise en années :", value = 3)
+  avg_company_job_duration = cols3[0].number_input("Durée moyenne des contrats de l'entreprise en années :", value = 3, min_value = 1)
   selected_companies_name = cols3[1].selectbox("Nom de l'entreprise :", options = companies_name.keys(), format_func = format_companies_name, index = 0)
   selected_job_location = cols3[2].selectbox("Lieux de travail :", options = employees_location.keys(), format_func = format_employees_location, index = 0)
   
