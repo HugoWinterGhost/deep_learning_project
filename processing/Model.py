@@ -25,9 +25,10 @@ def init_config(linkedin_simple):
   return (scaler, nlp, kmeans)
 
 def recommend_profiles(linkedin_simple, job, nb_recommendations):
-  init_config(linkedin_simple)
+  (scaler, nlp, kmeans) = init_config(linkedin_simple)
 
-  (scaler, nlp, kmeans) = job_df = pd.DataFrame([job])
+
+  job_df = pd.DataFrame([job])
 
   for col in linkedin_simple.columns:
     if col not in job_df.columns:

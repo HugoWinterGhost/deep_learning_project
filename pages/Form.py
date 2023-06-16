@@ -29,6 +29,13 @@ st.markdown("""
     .st-cb {
       cursor: pointer !important;
     }
+    .css-1rtsdbg {
+      color: white
+    }
+    .css-1rtsdbg:hover, .css-1rtsdbg:active {
+      background-color: #005A9C
+      border: none
+    }
   </style>
 """, unsafe_allow_html = True)
 
@@ -82,7 +89,7 @@ with st.form("my_form"):
     }
 
     recommended_profiles = recommend_profiles(updated_df_simple, new_job, 5)
-    # st.subheader("Profils Recommandés")
-    # showDataset(recommended_profiles, 1)
-    # st.markdown(f"Le dataset contient {len(recommended_profiles)} lignes et {len(recommended_profiles.columns)} colonnes. ")
+    st.subheader("Profils Recommandés")
+    showDataset(recommended_profiles, 1)
+    st.markdown(f"Le dataset contient {len(recommended_profiles)} lignes et {len(recommended_profiles.columns)} colonnes. ")
     st.balloons()

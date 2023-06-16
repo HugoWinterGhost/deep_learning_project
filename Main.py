@@ -30,6 +30,3 @@ st.markdown(f"Le dataset original contient {len(initial_df)} lignes et {len(init
 st.subheader("Dataset Nettoyé")
 showDataset(updated_df, 2)
 st.markdown(f"Après avoir nettoyé les données, on obtient un dataset de {len(updated_df)} lignes et {len(updated_df.columns)} colonnes.")
-
-
-st.write(list(initial_df.columns))
