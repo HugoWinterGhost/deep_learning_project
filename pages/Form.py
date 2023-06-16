@@ -64,7 +64,7 @@ with st.form("my_form"):
 
   companies_name = {1: "Atlassian", 2: "IBM", 3: "Paypal", 4: "Nestlé", 5: "WiseTech Global", 6: "Canva"}
   employees_location = {1: "Sydney", 2: "Melbourne", 3: "Newtown", 4: "Oatlands", 5: "Wangaratta", 6: "Carlton"}
-  employee_title = {1: "Data Scientist", 2: "Project Manager", 3: "arketing Manager", 4: "Software Engineer", 5: "Web Developer", 6: "Research Leader"}
+  employee_title = {1: "Data Scientist", 2: "Project Manager", 3: "Marketing Manager", 4: "Software Engineer", 5: "Web Developer", 6: "Research Leader"}
    
   def format_companies_name(option):
     return companies_name[option]
