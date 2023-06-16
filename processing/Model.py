@@ -13,28 +13,33 @@ def concat_vectors(row):
   text_vector = np.concatenate([row[col] for col in text_cols])
   return np.concatenate((num_vector, text_vector))
 
+def string_to_list(string):
+  return np.fromstring(string.strip('[]'), sep = ' ')
+
 def init_config(linkedin_simple):
   n_clusters = 4
+
+  linkedin_simple['feature_vector'] = linkedin_simple['feature_vector'].apply(string_to_list)
+
   feature_matrix = np.stack(linkedin_simple['feature_vector'].values)
 
   kmeans = KMeans(n_clusters = n_clusters, n_init = 4, random_state = 42)
   kmeans.fit(feature_matrix)
 
   scaler = MinMaxScaler()
+  scaler.fit(linkedin_simple[numeric_cols])
   nlp = spacy.load('en_core_web_sm')
   return (scaler, nlp, kmeans)
 
 def recommend_profiles(linkedin_simple, job, nb_recommendations):
   (scaler, nlp, kmeans) = init_config(linkedin_simple)
 
-
   job_df = pd.DataFrame([job])
-
   for col in linkedin_simple.columns:
     if col not in job_df.columns:
       job_df[col] = np.nan
 
-  job_df[numeric_cols] = scaler.transform(job_df[numeric_cols])
+  job_df[numeric_cols] = scaler.transform(job_df[numeric_cols])  # 
       
   for col in text_cols:
     job_df[col] = job_df[col].astype(str).apply(lambda x: nlp(x).vector)
