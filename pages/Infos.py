@@ -4,18 +4,9 @@ st.set_page_config(page_title = "Données de recommandation de profils Linkedin"
 
 st.title('Préparation des données')
 
-# companyFollowerCount remplacer les vlauers nulles par des 0 et supprimer les vlaeurs égales à 0 - done
 # companyHasLogo remplacer les valeurs null par True ou False si y a une image ou pas - done
-# companyName virer les 2 lignes nulles - done
 # companyStaffCount remplacer les nulles par la médiane 50% qui est de 1269 et supprimer les vlaeurs égales à 0 - done
 # genderEstimate faire un random de 66 % de H et 34% de F avec numpy - done
-# jobStartDate virer les 16 lignes nulles - done
-# avgEmployeeJobDuration virer les valeurs nulles et virer aussi celle qui sont en dessous ou égale de 0 - done
-# avgCompanyJobDuration virer les valeurs nulles et virer aussi celle qui sont en dessous ou égale de 0 - done
-# renommage et supression des colonnes - done
-# supression des lignes dupliqués
-# Encodage des labels
-# Fusion de pluisuers mots en une seul mot
 
 @st.cache_data
 def load_Infos(subtitle, description):
@@ -26,19 +17,21 @@ titles = [
   'Suppression des valeurs nulles',
   'Remplacement de certaines valeurs',
   'Renomage des colonnes',
-  'Uniformisation de Location',
-  'Suppression des colonnes inutiles',
+  'Uniformisation de données de localisation',
+  'Suppression des colonnes peu pertinentes',
   'Supression des lignes dupliqués',
   'Transformation des données',
 ]
+
+
 description = [
   'Colonnes concernées : companyFollowerCount, companyName, jobStartDate, avgEmployeeJobDuration, avgCompanyJobDuration',
-  'Remplacement : \nDes valeurs null dans la colonne companyHasLogo, par True ou False, si une image est présente ou non, au lieu d\'avoir le lien de l\'image. \nDans companyStaffCount remplacer les valeurs null par la mediane qui est de 1269 et supprimer la lignes contenant un 0. \nRemplacer les valeurs non renseignée par un random entre Male et Female, en respectant le pourcentage des deux deja présent qui est de 66% et 33%. \n',
-  'Renomage des colonnes pour qu\'elles soient plus simples a comprendre exemple de avgMemberPosDuration qui deviens avgEmployeeJobDuration',
-  'Puisque les données sont toutes en Australie on a enlever le pays et la region des colonnes EmployeeLocation et CompanyLocation',
-  'Colonnes concernées : Year_Birth, Dt_Customer, Z_CostContact, Z_Revenue, ID, Complain',
-  'Supprimer les lignes qui étaient exactement les mêmes',
-  'Normalisation des données numérique grace a la fonction minMaxScaler',
+  'Remplacement des valeurs nulles par des valeurs plus représentatives de notre DataFrame : \n- Les valeurs des colonnes companyHasLogo et hasPicture ont été remplacées par True ou False, en fonction de la présence ou non d\'une image \n- Les valeurs nulles de la colonne companyStaffCount ont été remplacé par la médiane qui est de 1269 \n- Les valeurs nulles de la colonne genderEstimate ont été remplacées par une valeur aléatoire entre Male et Female, \n  en respectant le proprotions du DataFrame, représentées par les probabilités suivantes H : 66%, F : 33%',
+  'Renomage des colonnes suivantes pour qu\'elles soient plus simples a comprendre : \n- posLocation => jobLocation, posTitle => jobTitle, startDate => jobStartDate, endDate => jobEndDate \n- avgMemberPosDuration => avgEmployeeJobDuration, avgCompanyPosDuration => avgCompanyJobDuration \n- mbrLocation => employeeLocation, mbrTitle => employeeTitle',
+  'Puisque les données sont toutes en Australie, on a enlever le pays, la région pour ne garder que la ville pour les colonnes suivantes : \n- EmployeeLocation et JobLocation',
+  'Colonnes concernées : Unnamed, companyUrl, companyUrn, country, followable, isPremium, mbrLocationCode, memberUrn, posLocationCode, positionId',
+  'Supression des lignes qui étaient exactement les mêmes',
+  'Normalisation des données numérique grace a la fonction minMaxScaler lors de la vectorisation des données',
 ]
 
 for x in range(len(titles)):
