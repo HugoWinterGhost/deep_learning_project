@@ -19,9 +19,25 @@ def showDataset(dataset, index):
   else:
     st.dataframe(dataset[cols], use_container_width = st.session_state.use_container_width)
 
+st.markdown("""
+  <style>
+    .st-cr {
+      cursor: pointer !important;
+    }
+    .st-cb {
+      background-color: #005A9C !important;
+      border: none !important;
+    }
+    .st-bz, .st-c0, .st-c1, .st-c2 {
+      border: none !important;
+    }
+  </style>
+""", unsafe_allow_html = True)
+
 st.checkbox("Utiliser la largeur du conteneur", value = True, key = "use_container_width")
-initial_df = load_dataset('./data/linkedin_data.csv')
-updated_df = load_dataset('./data/updated_linkedin_data.csv')
+with st.spinner('Chargement des données en cours...'):
+  initial_df = load_dataset('./data/linkedin_data.csv')
+  updated_df = load_dataset('./data/updated_linkedin_data.csv')
 
 st.subheader("Dataset Original")
 showDataset(initial_df, 1)

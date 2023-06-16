@@ -15,7 +15,8 @@ def load_dataset(dataset_path):
 def showDataset(dataset, index):
   st.dataframe(dataset, use_container_width = st.session_state.use_container_width)
 
-updated_df_simple = load_dataset('./data/updated_linkedin_simple_data.csv')
+with st.spinner('Chargement des données en cours...'):
+  updated_df_simple = load_dataset('./data/updated_linkedin_simple_data.csv')
 
 
 st.markdown("""
@@ -42,6 +43,9 @@ st.markdown("""
     }
     .css-xclnog {
       border-color: rgb(0, 90, 156, 1) rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.2) !important;
+    }
+    .st-bz, .st-c0, .st-c1, .st-c2 {
+      border: none !important;
     }
   </style>
 """, unsafe_allow_html = True)
