@@ -12,14 +12,7 @@ def load_dataset(dataset_path):
   return pd.read_csv(dataset_path)
 
 def showDataset(dataset, index):
-  cols = st.multiselect('Sélectionner les colonnes : ', dataset.columns, default = [], key = index)
-  data_load_state = st.text('Chargement des données...')
-  data_load_state.text("Données chargées!")
-
-  if cols == []:
-    st.dataframe(dataset, use_container_width = st.session_state.use_container_width)
-  else:
-    st.dataframe(dataset[cols], use_container_width = st.session_state.use_container_width)
+  st.dataframe(dataset, use_container_width = st.session_state.use_container_width)
 
 updated_df_simple = load_dataset('./data/updated_linkedin_simple_data.csv')
 
@@ -35,6 +28,9 @@ st.markdown("""
       border: none !important;
     }
     .css-1a5dplj:hover:enabled, .css-1a5dplj:focus:enabled {
+      background-color: #005A9C !important;
+    }
+    .st-eu {
       background-color: #005A9C !important;
     }
   </style>
@@ -64,12 +60,12 @@ with st.form("my_form"):
   
   def format_employee_title(option):
     return employee_title[option]
-   
+  
   st.write("\n")
   cols3 = st.columns(3)
   avg_company_job_duration = cols3[0].number_input("Durée moyenne des contrats de l'entreprise en années :", value = 3)
   selected_companies_name = cols3[1].selectbox("Nom de l'entreprise :", options = companies_name.keys(), format_func = format_companies_name, index = 0)
-  selected_job_location = cols3[2].selectbox("Adresse de résidence de l'entreprise :", options = employees_location.keys(), format_func = format_employees_location, index = 0)
+  selected_job_location = cols3[2].selectbox("Lieux de travail :", options = employees_location.keys(), format_func = format_employees_location, index = 0)
   
   st.write("\n")
   cols4 = st.columns(3)
