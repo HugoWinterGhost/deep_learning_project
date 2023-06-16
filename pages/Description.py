@@ -12,12 +12,14 @@ def load_Infos(subtitle, description):
 titles = [
   'Type de projet',
   'Technos utilisés',
-  'Source de donnée utilisé',
+  'Méthodologie de travail',
+  'Source de donnée utilisée',
   'Objectifs',
 ]
 description = [
   'Système de recommandation d\'offres d\'emplois en fonction de profils Linkedin',
-  'Langage Python',
+  '- Langage : Python \n- Outil : Github \n- Modèle de classification : Apprentissage Non supervisé, Clustering car on n\'avait pas de Label',
+  '- Daily Meeting \n- Répartitions des taches : on avançait ensemble',
   'Kaggle : https://www.kaggle.com/datasets/killbot/linkedin-profiles-and-jobs-data (pas besoin de scrapping)',
   'Le but du projet était de donner des recommendations de postes à pourvoir, pour certains profils Linkedin',
 ]
