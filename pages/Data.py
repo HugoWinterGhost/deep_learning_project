@@ -26,9 +26,9 @@ data_company = [
 ]
 
 data_contract = [
-  ["startDate", "Date de début"], ["endDate", "Date de fin"], ["posLocation", "Adresse de résidence de l'entreprise"],
-  ["posLocationCode", "Code postal de l'entreprise"], ["posTitle", "Intitulé du job recherché"], ["positionId", "Identifiant du contrat"],
-  ["avgMemberPosDuration", "Durée moyenne du contrat de l'employé en années"], ["avgCompanyPosDuration", "Durée moyenne du contrat de l'entreprise en années"]
+  ["startDate", "Date de début"], ["endDate", "Date de fin"], ["posLocation", "Lieux de travail"],
+  ["posLocationCode", "Code postal"], ["posTitle", "Intitulé du job recherché"], ["positionId", "Identifiant du contrat"],
+  ["avgMemberPosDuration", "Durée moyenne du contrat de l'employé en années"], ["avgCompanyPosDuration", "Durée moyenne des contrats de l'entreprise en années"]
 ]
 
 show_table("Données de l'employé", data_employee, data_columns)
