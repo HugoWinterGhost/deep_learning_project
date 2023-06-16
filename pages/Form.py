@@ -34,7 +34,6 @@ st.markdown("""
     }
     .css-1rtsdbg:hover, .css-1rtsdbg:active {
       background-color: #005A9C
-      border: none
     }
   </style>
 """, unsafe_allow_html = True)
