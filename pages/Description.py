@@ -12,10 +12,12 @@ def load_Infos(subtitle, description):
 titles = [
   'Technos utilisés',
   'Source de donnée utilisé',
+  'Objectifs',
 ]
 description = [
   'Python, Apprentissage non supervisé, Clustering',
   'Kaggle (https://www.kaggle.com/datasets/killbot/linkedin-profiles-and-jobs-data)',
+  'Le but du projet était de donner des recommendations de postes à pourvoir, suivant des informations rentrées par un utilisateur',
 ]
 
 for x in range(len(titles)):
