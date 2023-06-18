@@ -17,6 +17,7 @@ def showDataset(dataset, index):
 
 with st.spinner('Chargement des données en cours...'):
   updated_df_simple = load_dataset('./data/updated_linkedin_simple_data.csv')
+  updated_df = load_dataset('./data/updated_linkedin_data.csv')
 
 
 st.markdown("""
@@ -101,9 +102,10 @@ if submitted:
 
   with st.spinner('Calcul des recommandations en cours...'):
     recommended_profiles = recommend_profiles(updated_df_simple, new_job, 5)
+    filtered_recommended_profiles = updated_df.loc[list(recommended_profiles.index)]
   
   st.subheader("Profils Recommandés")
   st.checkbox("Utiliser la largeur du conteneur", value = True, key = "use_container_width")
-  showDataset(recommended_profiles, 1)
-  st.markdown(f"Le dataset contient {len(recommended_profiles)} lignes et {len(recommended_profiles.columns)} colonnes. ")
+  showDataset(filtered_recommended_profiles, 1)
+  st.markdown(f"Le dataset contient {len(filtered_recommended_profiles)} lignes et {len(filtered_recommended_profiles.columns)} colonnes. ")
   st.balloons()
