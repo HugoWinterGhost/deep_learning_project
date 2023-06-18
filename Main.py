@@ -11,8 +11,6 @@ def load_dataset(dataset_path):
 
 def showDataset(dataset, index):
   cols = st.multiselect('Sélectionner les colonnes : ', dataset.columns, default = [], key = index)
-  data_load_state = st.text('Chargement des données...')
-  data_load_state.text("Données chargées!")
 
   if cols == []:
     st.dataframe(dataset, use_container_width = st.session_state.use_container_width)
